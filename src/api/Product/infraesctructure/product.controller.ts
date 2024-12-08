@@ -20,9 +20,9 @@ async function getAllProducts(req: Request, res: Response) {
 async function getProductById(req: Request, res: Response) {
   try {
     if (!req.params.id) return badResponse(res, "product_mess_8");
-    const product = await ProductModel.findById(req.params.id)
-      .populate("category")
-      .populate("owner");
+    const product = await ProductModel.findById(req.params.id).populate(
+      "category"
+    );
 
     return goodResponse(res, "crud_mess_0", product);
   } catch (error) {
